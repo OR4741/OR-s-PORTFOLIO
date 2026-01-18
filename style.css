@@ -1,96 +1,513 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* Color Palette - Pastel Gradient */
+  --color-bg-start: #C8B6E2; /* Lavender */
+  --color-bg-middle: #D4A5C7; /* Soft Pink/Orchid */
+  --color-bg-end: #F2C5BC; /* Peach/Salmon */
+  
+  --color-text-white: #FFFFFF;
+  --color-text-subtle: rgba(255, 255, 255, 0.9);
+  
+  /* Fonts */
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Inter', sans-serif;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-a:hover {
-  color: #535bf2;
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
+  font-family: var(--font-sans);
+  background: linear-gradient(135deg, var(--color-bg-start), var(--color-bg-middle), var(--color-bg-end));
+  background-attachment: fixed; /* Keeps gradient fixed while scrolling */
+  color: var(--color-text-white);
   min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  width: 100vw;
+  overflow-x: hidden;
+  font-weight: 300;
 }
 
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #f7df1eaa);
+.hero-section {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem 4rem;
+  position: relative;
 }
 
-.card {
-  padding: 2em;
+/* Vertical Lines */
+.hero-section::before,
+.hero-section::after {
+  content: '';
+  position: absolute;
+  top: 15%;
+  bottom: 15%;
+  width: 2px;
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
-.read-the-docs {
-  color: #888;
+.hero-section::before {
+  left: 4rem; /* Match padding */
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+.hero-section::after {
+  right: 4rem;
+}
+
+/* Hero Header (Muriel Demonti / Graphic Designer) */
+.hero-header {
+    position: absolute;
+    top: 2rem; /* Or adjust to sit below sticky nav if needed, but sticky nav overlays */
+    left: 0;
+    width: 100%;
+    padding: 0 4rem;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.5rem;
+    letter-spacing: 0.5px;
+    z-index: 5; /* Below sticky nav (100) */
+    pointer-events: none; /* Let clicks pass through if overlapping */
+    margin-top: 4rem; /* Push down a bit so it's not hidden by fixed nav immediately */
+}
+
+.hero-name, .hero-role {
+    pointer-events: auto;
+}
+
+/* Navigation & Footer Text */
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.5rem; /* 내비게이션 글씨 크기 */
+  letter-spacing: 1px;
+  z-index: 100;
+  cursor: default;
+  
+  /* Fixed/Sticky Styles */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 2rem 4rem; /* 스크롤 시 내비게이션 효과 */
+  transition: background-color 0.3s ease, padding 0.3s ease;
+}
+
+.top-nav.scrolled {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 1.5rem 4rem; /* 스크롤 시 내비게이션 크기 설정 */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.bottom-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  z-index: 10;
+  width: 100%; /* Ensure full width inside flex container */
+}
+
+/* Scroll Top Button */
+#scrollTopBtn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  padding: 1rem;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: opacity 0.3s, transform 0.3s;
+  opacity: 0;
+  pointer-events: none; /* Clickable only when visible */
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+#scrollTopBtn.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#scrollTopBtn:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-3px);
+}
+
+/* Center Content */
+.center-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 5;
+}
+
+.main-title {
+  font-family: var(--font-serif);
+  font-size: 8rem;
+  line-height: 0.85;
+  font-weight: 400;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  mix-blend-mode: overlay; /* Helps it blend with background nicely */
+  color: white; /* Fallback */
+  position: relative;
+  z-index: 2;
+}
+
+.main-title span {
+  display: block;
+}
+
+/* Stylistic adjustments for individual letters if needed using standard CSS */
+.line-1 {
+    letter-spacing: -5px;
+}
+.line-2 {
+    letter-spacing: -5px;
+    font-style: italic; /* Use italic variant for "fluid" feel in Playfair */
+}
+
+/* Decorative Orbits */
+.decorative-orbit {
+  position: absolute;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-15deg);
+  pointer-events: none;
+}
+
+.orbit-1 {
+  width: 450px;
+  height: 200px;
+}
+
+.orbit-2 {
+  width: 500px;
+  height: 250px;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Stars */
+.star {
+  position: absolute;
+  color: white;
+  font-size: 1.5rem;
+  opacity: 0.8;
+  animation: twinkle 3s infinite ease-in-out;
+}
+
+.star-1 { top: -20%; left: -10%; animation-delay: 0s; }
+.star-2 { bottom: -10%; right: -5%; animation-delay: 1s; }
+.star-3 { top: 40%; right: -40%; animation-delay: 2s; font-size: 1rem; }
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.4; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 1.5rem;
   }
-  a:hover {
-    color: #747bff;
+  
+  .hero-section::before, .hero-section::after {
+    display: none; /* Hide vertical lines on mobile if too cramped */
   }
-  button {
-    background-color: #f9f9f9;
+
+  .main-title {
+    font-size: 4rem;
   }
+  
+  .orbit-1 { width: 280px; height: 120px; }
+  .orbit-2 { width: 320px; height: 150px; }
+}
+
+/* --- New Section Styles --- */
+
+.content-section {
+  padding: 6rem 4rem;
+  min-height: 100vh; /* Each section takes up significant space */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: 3.5rem;
+  margin-bottom: 4rem;
+  text-align: center;
+  font-weight: 400;
+  letter-spacing: -2px;
+}
+
+/* Glassmorphism Card Utility */
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-5px);
+}
+
+/* About Section Layout */
+/* About Section Layout */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr; /* Slightly more space for card */
+  gap: 3rem;
+  align-items: center; /* Center vertically */
+  height: 80vh; /* Constrain height to viewport relative */
+  max-height: 800px; /* Max height to prevent it getting too tall on large screens */
+  width: 100%;
+  max-width: 1650px; /* limit width */
+  margin: 0 auto;
+}
+
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%; 
+  overflow: hidden; /* Ensure image doesn't spill */
+}
+
+.profile-photo {
+  /* This class was used in previous iterations, but now we use img directly or container */
+  width: 100%;
+  height: 100%;
+}
+
+.about-grid img {
+    max-height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2)); /* Add depth to the cutout */
+}
+
+/* Glassmorphism Card Utility - Specifics for About to fit */
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 2.5rem; /* 이미지들 padding 사이즈 조절..? */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  
+  /* Layout internal */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  max-height: 100%;
+  overflow-y: auto; /* Scroll if content really exceeds, but aim to fit */
+}
+
+.info-group {
+  margin-bottom: 2rem;
+}
+
+.info-group:last-child {
+    margin-bottom: 0;
+}
+
+.info-title {
+  font-family: var(--font-serif);
+  font-size: 1.75rem; /* Slightly smaller for compactness */
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  padding-bottom: 0.3rem;
+  display: inline-block;
+  color: var(--color-text-white);
+}
+
+.info-group p {
+  font-size: 1.2rem;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.skill-tag {
+  background: rgba(255,255,255,0.2);
+  padding: 0.4rem 0.8rem;
+  border-radius: 50px;
+  font-size: 1.2rem;
+}
+
+/* Portfolio Grids (Logofolio, Banners, Details) */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.portfolio-item {
+  aspect-ratio: 1/1; /* Square for logos */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.7);
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.portfolio-item:hover img {
+    transform: scale(1.02); /* 마우스 호버 시 이미지가 커지는 기준치 */
+}
+
+.banner-grid {
+    grid-template-columns: repeat(2, 1fr); /* 배너 정렬 */
+}
+
+.banner-item {
+    height: clamp(200px, 22vw, 300px);
+    aspect-ratio: auto;
+    /* aspect-ratio: 10/3 !important; /* Reduced height to 2/3 of original 16/9 */
+}
+
+.banner-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.detail-item {
+    aspect-ratio: 9/16; /* Portrait for detailed pages */
+}
+
+.detail-grid {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.logo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr); /* 2 equal rows */
+    gap: 1.5rem; /* Slightly tighter gap */
+    height: 70vh; /* Constrain height to viewport */
+    max-height: 800px;
+    width: 100%;
+    /* Center items in their cells if aspect ratio constraints leave space */
+    justify-items: center; 
+    align-items: center;
+}
+
+.logo-grid .portfolio-item {
+    aspect-ratio: 1/1; /* Enforce square */
+    height: 100%; /* Fill the row height */
+    width: auto; /* Let width follow height to maintain square */
+    max-width: 100%; /* Ensure it doesn't overflow cell width */
+    max-height: 100%; /* Redundant but safe */
+}
+
+
+/* Responsive Updates */
+@media (max-width: 1024px) {
+  .content-section {
+    padding: 4rem 1.5rem;
+  }
+  
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    height: auto; /* Allow auto height on mobile so content fits */
+    max-height: none;
+  }
+  
+  .about-grid .glass-card {
+      padding-top: 3rem; /* Add extra spacing above Education */
+      overflow-y: visible; /* No need to scroll inside card on mobile, let page scroll */
+  }
+
+  .about-grid img {
+      max-width: 300px; /* Restrict photo size on mobile */
+      margin: 0 auto;  /* Ensure centered */
+  }
+  
+  .section-title {
+    font-size: 2.5rem;
+  }
+  
+  .banner-grid, .detail-grid {
+      grid-template-columns: 1fr;
+  }
+  
+  .logo-grid {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+      height: auto;
+      max-height: none;
+  }
+}
+
+/* Animation Utilities */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  will-change: opacity, visibility;
+}
+
+.fade-in-section.in-view {
+  opacity: 1;
+  transform: none;
 }
