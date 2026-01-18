@@ -49,6 +49,16 @@ body {
   position: relative;
 }
 
+.hero {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem 4rem;
+  position: relative;
+}
+
 /* Vertical Lines */
 .hero-section::before,
 .hero-section::after {
@@ -56,7 +66,7 @@ body {
   position: absolute;
   top: 15%;
   bottom: 15%;
-  width: 2px;
+  width: 1.5px;
   background-color: rgba(255, 255, 255, 0.8);
 }
 
@@ -77,7 +87,7 @@ body {
     padding: 0 4rem;
     display: flex;
     justify-content: space-between;
-    font-size: 1.5rem;
+    font-size: 1rem;
     letter-spacing: 0.5px;
     z-index: 5; /* Below sticky nav (100) */
     pointer-events: none; /* Let clicks pass through if overlapping */
@@ -93,7 +103,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 1.5rem; /* 내비게이션 글씨 크기 */
+  font-size: 1rem; /* 내비게이션 글씨 크기 */
   letter-spacing: 1px;
   z-index: 100;
   cursor: default;
@@ -103,7 +113,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 2rem 4rem; /* 스크롤 시 내비게이션 효과 */
+  padding: 1.5rem 4rem; /* 스크롤 시 내비게이션 효과 */
   transition: background-color 0.3s ease, padding 0.3s ease;
 }
 
@@ -111,7 +121,7 @@ body {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  padding: 1.5rem 4rem; /* 스크롤 시 내비게이션 크기 설정 */
+  padding: 1.2rem 4rem; /* 스크롤 시 내비게이션 크기 설정 */
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -173,7 +183,7 @@ body {
 
 .main-title {
   font-family: var(--font-serif);
-  font-size: 8rem;
+  font-size: 6rem;
   line-height: 0.85;
   font-weight: 400;
   display: flex;
@@ -201,7 +211,7 @@ body {
 /* Decorative Orbits */
 .decorative-orbit {
   position: absolute;
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 50%;
   top: 50%;
   left: 50%;
@@ -210,14 +220,14 @@ body {
 }
 
 .orbit-1 {
-  width: 450px;
-  height: 200px;
+  width: 400px;
+  height: 150px;
 }
 
 .orbit-2 {
-  width: 500px;
-  height: 250px;
-  border-color: rgba(255, 255, 255, 0.3);
+  width: 450px;
+  height: 200px;
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 /* Stars */
@@ -270,7 +280,7 @@ body {
 
 .section-title {
   font-family: var(--font-serif);
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   margin-bottom: 4rem;
   text-align: center;
   font-weight: 400;
@@ -301,10 +311,10 @@ body {
   grid-template-columns: 1fr 1.2fr; /* Slightly more space for card */
   gap: 3rem;
   align-items: center; /* Center vertically */
-  height: 80vh; /* Constrain height to viewport relative */
+  height: 60vh; /* Constrain height to viewport relative */
   max-height: 800px; /* Max height to prevent it getting too tall on large screens */
   width: 100%;
-  max-width: 1650px; /* limit width */
+  max-width: 1300px; /* limit width */
   margin: 0 auto;
 }
 
@@ -336,7 +346,7 @@ body {
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 16px;
-  padding: 2.5rem; /* 이미지들 padding 사이즈 조절..? */
+  padding: 2rem; /* 이미지들 padding 사이즈 조절..? */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s ease, background-color 0.3s ease;
   
@@ -350,7 +360,7 @@ body {
 }
 
 .info-group {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .info-group:last-child {
@@ -359,7 +369,7 @@ body {
 
 .info-title {
   font-family: var(--font-serif);
-  font-size: 1.75rem; /* Slightly smaller for compactness */
+  font-size: 1.4rem; /* Slightly smaller for compactness */
   margin-bottom: 0.5rem;
   border-bottom: 1px solid rgba(255,255,255,0.3);
   padding-bottom: 0.3rem;
@@ -368,20 +378,20 @@ body {
 }
 
 .info-group p {
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 .skill-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.6rem;
+  gap: 0.5rem;
 }
 
 .skill-tag {
   background: rgba(255,255,255,0.2);
   padding: 0.4rem 0.8rem;
   border-radius: 50px;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 /* Portfolio Grids (Logofolio, Banners, Details) */
@@ -398,7 +408,6 @@ body {
   justify-content: center;
   color: rgba(255,255,255,0.7);
   font-family: var(--font-serif);
-  font-size: 1.2rem;
   position: relative;
   overflow: hidden;
 }
@@ -440,10 +449,10 @@ body {
 
 .logo-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 1fr); /* 2 equal rows */
-    gap: 1.5rem; /* Slightly tighter gap */
-    height: 70vh; /* Constrain height to viewport */
+    gap: 5rem; /* Slightly tighter gap */
+    height: 60vh; /* Constrain height to viewport */
     max-height: 800px;
     width: 100%;
     /* Center items in their cells if aspect ratio constraints leave space */
