@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <link rel="icon" type="image/svg+xml" href="/public/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/style.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <title>오아름의 Portfolio</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- specific global nav outside of sections -->
+      <nav class="top-nav">
+          <a href="#" class="left-nav" style="color: white; text-decoration: none; cursor: pointer;">OR's</a>
+          <div class="nav-links" style="display: flex; gap: 5rem;"> <!-- 내비게이션 버튼 간격 -->
+            <a href="#about" style="color:white; text-decoration:none;">About</a>
+            <a href="#logofolio" style="color:white; text-decoration:none;">Logofolio</a>
+            <a href="#banners" style="color:white; text-decoration:none;">Banners</a>
+            <a href="#details" style="color:white; text-decoration:none;">Details</a>
+          </div>
+          <!-- Right side reserved or empty for balance if needed, removing Graphic Designer from here -->
+          <div style="width: 100px;"></div> 
+      </nav>
+
+      <!-- Content will be injected or structured here -->
+      <main class="hero-section">
+        <!-- Hero Header specific to the first page -->
+        <div class="hero-header">
+            <span class="hero-name">OH ARUM</span>
+            <span class="hero-role">Web Designer</span>
+        </div>
+        
+        <div class="center-content">
+            <h1 class="main-title">
+                <span class="line-1">PORT</span>
+                <span class="line-2">FOLIO</span>
+            </h1>
+            <!-- Orbit rings and stars will be added via CSS/SVG -->
+            <div class="decorative-orbit orbit-1"></div>
+            <div class="decorative-orbit orbit-2"></div>
+            <div class="star star-1">✦</div>
+            <div class="star star-2">✦</div>
+            <div class="star star-3">✦</div>
+        </div>
+      </main>
+
+      <!-- About Section -->
+      <section id="about" class="content-section">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-grid">
+           <!-- Profile Photo Side -->
+           <div class="profile-container">
+               <img src="/public/profile.png" alt="Profile Photo" />
+             </div>
+           
+           <!-- Info Side -->
+           <div class="glass-card">
+              <div class="info-group">
+                <h3 class="info-title">Education</h3>
+                <p><strong>SBS Art Cumputer Academe</strong></p>
+                <p>• <strong>웹 코딩, 상세페이지, 배너, 로고 등</strong></p>
+              </div>
+
+              <div class="info-group">
+                <h3 class="info-title">Contact me</h3>
+                <p> • dkfma4741@naver.com</p>
+                <p> • behance.net/arumoh</p>
+              </div>
+              
+              <div class="info-group">
+                <h3 class="info-title">Certificate</h3>
+                <p>• <strong>컴퓨터 그래픽스 기능사</strong> (2020)</p>
+                <p>• <strong>GTQ 1급</strong> (2020)</p>
+                <p>• <strong>웹 디자인 기능사</strong> (2019)</p>
+                <p>• <strong>컴퓨터 활용능력 2급</strong> (2019)</p>
+              </div>
+              
+              <div class="info-group">
+                <h3 class="info-title">Skills</h3>
+                <div class="skill-tags">
+                  <span class="skill-tag">Photoshop</span>
+                  <span class="skill-tag">Illustrator</span>
+                  <span class="skill-tag">Figma</span>
+                  <span class="skill-tag">Web coding</span>
+                  <span class="skill-tag">Procreate</span>
+                  <span class="skill-tag">Anti-gravity</span>
+                  <span class="skill-tag">AI</span>
+                </div>
+              </div>
+              
+              <div class="info-group">
+                <h3 class="info-title">Hobbies</h3>
+                <p><strong>러닝, 태권도, 피아노, 야구, 그림, 클라이밍, 출사, 여행</strong></p>
+              </div>
+           </div>
+        </div>
+      </section>
+
+      <!-- Logofolio Section -->
+      <section id="logofolio" class="content-section">
+          <h2 class="section-title">Logofolio</h2>
+          <div class="portfolio-grid logo-grid">
+              <div class="portfolio-item glass-card">
+                <img src="/public/logo 1.png" alt="Logo 1" />
+              </div>
+              <div class="portfolio-item glass-card">
+                <img src="/public/logo 2.png" alt="Logo 2" />
+              </div>
+              <div class="portfolio-item glass-card">
+                <img src="/public/logo 3.png" alt="Logo 3" />
+              </div>
+              <div class="portfolio-item glass-card">
+                <img src="/public/logo 4.png" alt="Logo 4" />
+              </div>
+              <div class="portfolio-item glass-card">
+                <img src="/public/logo 5.png" alt="Logo 5" />
+              </div>
+              <div class="portfolio-item glass-card">
+                <img src="/public/logo 6.png" alt="Logo 6" />
+              </div>
+          </div>
+      </section>
+
+      <!-- Banners Section -->
+      <section id="banners" class="content-section">
+          <h2 class="section-title">Banners</h2>
+          <div class="portfolio-grid banner-grid">
+              <div class="portfolio-item banner-item glass-card">
+                <img src="/public/bn1.jpg" alt="Banner 1" />
+              </div>
+              <div class="portfolio-item banner-item glass-card">
+                <img src="/public/bn2.jpg" alt="Banner 2" />
+              </div>
+              <div class="portfolio-item banner-item glass-card">
+                <img src="/public/bn3.jpg" alt="Banner 3" />
+              </div>
+              <div class="portfolio-item banner-item glass-card">
+                <img src="/public/bn4.jpg" alt="Banner 4" />
+              </div>
+          </div>
+      </section>
+
+      <!-- Detail Pages Section -->
+      <section id="details" class="content-section">
+          <h2 class="section-title">Detailed Projects</h2>
+          <div class="portfolio-grid detail-grid">
+              <div class="portfolio-item detail-item glass-card">
+                <img src="/public/dp1.jpg" alt="Detail-page 1" />
+              </div>
+              <div class="portfolio-item detail-item glass-card">
+                <img src="/public/dp2.jpg" alt="Detail-page 2" />
+              </div>
+              <div class="portfolio-item detail-item glass-card">
+                <img src="/public/dp3.jpg" alt="Detail-page 3" />
+              </div>
+          </div>
+      </section>
+      
+      <!-- Back to Top Button -->
+      <button id="scrollTopBtn" title="Go to top">↑</button>
+    </div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
